@@ -7,7 +7,7 @@ const app = express();
 
 
 //mongodb
-mongoose.connect('mongodb://mongo:27017/todo_express',
+mongoose.connect(process.env.MONGO_URL,
     {
         useNewUrlParser: true,
         useUnifiedTopology: true
@@ -29,4 +29,4 @@ app.use(require('./routes/index'));
 app.use(require('./routes/todo'));
 
 //server connection
-app.listen(3000, () => console.log('Server on port: 3000'));
+app.listen(process.env.PORT, () => console.log(`Server on port: ${process.env.PORT}`));
